@@ -1,12 +1,28 @@
-import { StatusBar } from 'expo-status-bar';
+// import 'react-native-gesture-handler';
+import { ClerkProvider, SignedIn, SignedOut } from '@clerk/clerk-expo';
+import LoginScreen from './App/Screen/LoginScreen';
 import { StyleSheet, Text, View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+import TabNavigation from './App/Navigations/TabNavigation';
+import HomeScreen from './App/Screen/HomeScreen';
+
+// const clerkApiKey = process.env.CLERK_PUBLISHABLE_KEY;
+const clerkApiKey = 'pk_test_dmVyaWZpZWQtc2F3ZmlzaC04OC5jbGVyay5hY2NvdW50cy5kZXYk';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <ClerkProvider publishableKey={clerkApiKey}>
+      <View style={styles.container}>
+        <SignedIn>
+          <NavigationContainer>
+            <TabNavigation/>
+          </NavigationContainer>
+        </SignedIn>
+        <SignedOut>
+          <LoginScreen/>
+        </SignedOut>
+      </View>
+    </ClerkProvider>
   );
 }
 
@@ -16,5 +32,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
+    marginTop:30,
   },
 });
