@@ -19,7 +19,7 @@ export default function Header() {
             }}
           />
           <View>
-            <Text style={{ color:Colors.white }}> Wlcome </Text>
+            <Text style={{ color:Colors.white, fontFamily:'serif' }}> Wlcome </Text>
             <Text style={styles.mainText}> {user?.fullName} </Text>
           </View>
         </View>
@@ -39,7 +39,8 @@ export default function Header() {
         justifyContent:'space-between',
         }}>
         <TextInput placeholder='Search Courses' style={{
-          fontSize:18,
+          fontSize:23,
+          fontFamily:'sans-serif'
         }} />
         <FontAwesome5 name="search" size={50} color={Colors.light_green} />
       </View>
@@ -51,6 +52,7 @@ const styles = StyleSheet.create({
   mainText:{
     color:Colors.white,
     fontSize:20,
+    fontFamily:'sans-serif'
   },
   rowStyle:{
     display:'flex',
