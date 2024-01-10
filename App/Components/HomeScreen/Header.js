@@ -19,7 +19,7 @@ export default function Header() {
             }}
           />
           <View>
-            <Text style={{ color:Colors.white, fontFamily:'serif' }}> Wlcome </Text>
+            <Text style={{ color:Colors.white, fontFamily:'serif' }}> Welcome </Text>
             <Text style={styles.mainText}> {user?.fullName} </Text>
           </View>
         </View>
@@ -42,7 +42,7 @@ export default function Header() {
           fontSize:23,
           fontFamily:'sans-serif'
         }} />
-        <FontAwesome5 name="search" size={50} color={Colors.light_green} />
+        <FontAwesome5 name="search" size={44} color={Colors.light_green} />
       </View>
     </View>
   )

@@ -6,5 +6,6 @@ export default{
    black:'#0a0a0a',
    gray:'#6563eb',
    bgColor: "#cacaed",
-   light_green: "#8ed477"
+   light_green: "#8ed477",
+   golden: '#b58605'
 }

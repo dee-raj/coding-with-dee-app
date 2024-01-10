@@ -7,7 +7,7 @@ export default function SubHeading({text, color=Colors.dark_primary}) {
     <View>
       <Text style={{
          fontFamily:'monospace',
-         fontSize:24,
+         fontSize:28,
          color:color
       }}> {text} </Text>
     </View>
