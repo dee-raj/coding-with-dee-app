@@ -1,4 +1,4 @@
-import { View, Text, Image } from 'react-native'
+import { View, Text, Image, StyleSheet } from 'react-native'
 import React from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import Colors from '../../Utils/Colors';
@@ -21,40 +21,20 @@ export default function CourseItem({ item }) {
             <Text style={{
                fontFamily: 'sans-serif-medium',
                fontSize: 18,
-            }}>{item?.name}</Text>
-            <View style={{
-               display: 'flex',
-               flexDirection: 'row',
-               justifyContent: 'space-between',
             }}>
-               <View style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: 7,
-                  marginTop: 10,
-               }}>
+               {item?.name}
+            </Text>
+            <View style={styles.rowStyles}>
+               <View style={styles.rowStyles}>
                   <FontAwesome5 name="book-reader" size={27} color={Colors.dark_primary} />
                   <Text style={{ fontFamily: 'serif' }}>{item?.chapters?.length} Chapters</Text>
                </View>
-               <View style={{
-                  display: 'flex',
-                  flexDirection: 'row',
-                  alignItems: 'center',
-                  gap: 7,
-                  marginTop: 10,
-               }}>
+               <View style={styles.rowStyles}>
                   <FontAwesome5 name="clock" size={19} color={Colors.dark_primary} />
                   <Text style={{ fontFamily: 'sans-serif-thin' }}>{item?.time}</Text>
                </View>
             </View>
-            <View style={{
-               display: 'flex',
-               flexDirection: 'row',
-               alignItems: 'center',
-               gap: 7,
-               marginTop: 10,
-            }}>
+            <View style={styles.feeStyle}>
                <FontAwesome5 name="rupee-sign" size={18} color={Colors.golden} />
                <Text style={{
                   color: Colors.golden,
@@ -66,3 +46,20 @@ export default function CourseItem({ item }) {
       </View>
    )
 }
+const styles = StyleSheet.create({
+   rowStyles:{
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems:'center',
+      justifyContent:'space-between',
+      gap:7,
+      marginTop: 5,
+   },
+   feeStyle:{
+      display: 'flex',
+      flexDirection: 'row',
+      alignItems:'center',
+      gap:10,
+      marginTop: 10,
+   }
+});
