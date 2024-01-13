@@ -30,19 +30,19 @@ export default function Header() {
       </View>
       <View style={{ 
         backgroundColor: Colors.white, 
-        paddingLeft:20,
-        paddingRight:15,
-        borderRadius:99,
+        paddingLeft:15,
+        borderRadius:93,
         marginTop:25,
         display:'flex',
         flexDirection:'row',
-        justifyContent:'space-between',
-        }}>
-        <TextInput placeholder='Search Courses' style={{
-          fontSize:23,
-          fontFamily:'sans-serif'
+        justifyContent:'space-evenly'
+      }}>
+        <FontAwesome5 name="search" size={35} color={Colors.black}/>
+        <TextInput placeholder=' Search Courses...' style={{
+          fontSize:29,
+          fontFamily:'sans-serif',
+          width:'80%'
         }} />
-        <FontAwesome5 name="search" size={44} color={Colors.light_green} />
       </View>
     </View>
   )

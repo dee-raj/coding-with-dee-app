@@ -14,7 +14,8 @@ export default function CourseItem({ item }) {
       }}>
          <Image source={{ uri: item?.banner?.url }}
             style={{
-               width: 204, height: 205,
+               width: "100%", 
+               height: 202,
                borderRadius: 15
             }} />
          <View style={{ padding: 7 }}>

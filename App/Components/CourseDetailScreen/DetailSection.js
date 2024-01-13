@@ -1,9 +1,9 @@
-import { View, Text, Dimensions, Image, StyleSheet, TouchableOpacity } from 'react-native'
-import React from 'react'
+import { View, Text, Dimensions, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import React from 'react';
 import Colors from '../../Utils/Colors';
 import OptionItem from './OptionItem';
 
-export default function DetailSection({ course }) {
+export default function DetailSection({ course, enrollCourse, userEnrolledcourse }) {
    return course && (
       <View style={{
          backgroundColor: Colors.white,
@@ -39,10 +39,13 @@ export default function DetailSection({ course }) {
             <Text style={styles.detail}>{course?.description?.text}</Text>
          </View>
          <View style={styles.rowStyle}>
-            <TouchableOpacity style={[{backgroundColor: Colors.dark_primary}, styles.btn]}>
+            {userEnrolledcourse?.length ==0?
+            <TouchableOpacity 
+               onPress={()=>enrollCourse()} 
+               style={ [{ backgroundColor: Colors.dark_primary }, styles.btn] }>
                <Text style={styles.btnText}>Enroll for Free</Text>
-            </TouchableOpacity>
-            <TouchableOpacity style={[{backgroundColor: Colors.golden}, styles.btn]}>
+            </TouchableOpacity> :null}
+            <TouchableOpacity style={[{ backgroundColor: Colors.golden }, styles.btn]}>
                <Text style={styles.btnText}>Membership ₹199/month</Text>
             </TouchableOpacity>
          </View>
@@ -76,12 +79,12 @@ const styles = StyleSheet.create({
    btn: {
       padding: 8,
       borderRadius: 15,
-      marginRight:5
+      marginRight: 5
    },
    btnText: {
       fontFamily: 'Roboto',
       textAlign: 'center',
       color: Colors.light_white,
-      fontSize:17
+      fontSize: 17
    }
 });

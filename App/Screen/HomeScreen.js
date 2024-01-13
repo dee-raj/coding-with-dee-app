@@ -8,7 +8,9 @@ import CourseList from '../Components/HomeScreen/CourseList';
 export default function HomeScreen() {
   return (
     <View>
+      <ScrollView>
       <View style={{
+        flex:1,
         backgroundColor: Colors.primary,
         height: 250,
         padding: 20,
@@ -23,6 +25,7 @@ export default function HomeScreen() {
           <CourseList level={"advance"} />
         </View>
       </View>
+      </ScrollView>
     </View>
   )
 }
