@@ -4,27 +4,27 @@ const MASTER_URL = "https://api-ap-south-1.hygraph.com/v2/clr55xt303asb01uq3aikv
 
 export const getCourseList = async (level) => {
   const query = gql`
-   query CourseList {
-      courses(where: {level: `+ level + `}) {
+  query CourseList {
+    courses(where: {level: `+ level +`}) {
+      id
+      banner {
+        url
+      }
+      name
+      price
+      level
+      tags
+      time
+      author
+      description {
+        markdown
+      }
+      chapters {
+        title
         id
-        banner {
-          url
-        }
-        name
-        price
-        level
-        tags
-        time
-        author
-        description {
-          markdown
-          raw
-          text
-        }
-        chapters {
-          title
-          id
-          content {
+        content {
+          heading
+          description {
             markdown
           }
           output {
@@ -33,7 +33,8 @@ export const getCourseList = async (level) => {
         }
       }
     }
-   `
+  }
+  `
   const result = await request(MASTER_URL, query);
   return result;
 }

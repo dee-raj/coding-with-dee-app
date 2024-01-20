@@ -36,7 +36,7 @@ export default function DetailSection({ course, enrollCourse, userEnrolledcourse
          </View>
          <View>
             <Text style={styles.desc}> Description </Text>
-            <Text style={styles.detail}>{course?.description?.text}</Text>
+            <Text style={styles.detail}>{course?.description?.markdown}</Text>
          </View>
          <View style={styles.rowStyle}>
             {userEnrolledcourse?.length ==0?

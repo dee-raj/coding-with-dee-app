@@ -30,7 +30,7 @@ export default function CourseDetailScreen() {
       }
     })
   };
-  
+
   const GetUserEnrolledCourses = ()=>{
     getUserEnrolledCourse(params.course.id, user.primaryEmailAddress.emailAddress)
     .then(res =>{
