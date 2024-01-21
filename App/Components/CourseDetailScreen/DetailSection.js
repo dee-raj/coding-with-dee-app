@@ -1,9 +1,14 @@
-import { View, Text, Dimensions, Image, StyleSheet, TouchableOpacity } from 'react-native';
+import { View, Text, Dimensions, Image, StyleSheet, TouchableOpacity, useWindowDimensions } from 'react-native';
 import React from 'react';
 import Colors from '../../Utils/Colors';
 import OptionItem from './OptionItem';
+import RenderHtml from 'react-native-render-html';
 
 export default function DetailSection({ course, enrollCourse, userEnrolledcourse }) {
+   const { width } = useWindowDimensions();
+   const descriptionSource = {
+      html: course?.description?.html
+   };
    return course && (
       <View style={{
          backgroundColor: Colors.white,
@@ -36,7 +41,13 @@ export default function DetailSection({ course, enrollCourse, userEnrolledcourse
          </View>
          <View>
             <Text style={styles.desc}> Description </Text>
-            <Text style={styles.detail}>{course?.description?.markdown}</Text>
+            <RenderHtml
+               style={styles.detail}
+               contentWidth={width}
+               source={descriptionSource}
+               tagsStyles={tagsStyles}
+            />
+            {/* <Text style={styles.detail}>{course?.description?.markdown}</Text> */}
          </View>
          <View style={styles.rowStyle}>
             {userEnrolledcourse?.length ==0?
@@ -88,3 +99,18 @@ const styles = StyleSheet.create({
       fontSize: 17
    }
 });
+const tagsStyles = {
+   body: {
+      whiteSpace: 'normal',
+      color: Colors.black,
+      fontWeight: 300
+   },
+   p: {
+      justifyContent:'center',
+   },
+   code:{
+      backgroundColor: Colors.bgColor,
+      padding:10,
+      borderRadius:14,
+   }
+};

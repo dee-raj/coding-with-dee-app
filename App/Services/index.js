@@ -18,6 +18,7 @@ export const getCourseList = async (level) => {
       author
       description {
         markdown
+        html
       }
       chapters {
         title
@@ -26,9 +27,11 @@ export const getCourseList = async (level) => {
           heading
           description {
             markdown
+            html
           }
           output {
             markdown
+            html
           }
         }
       }

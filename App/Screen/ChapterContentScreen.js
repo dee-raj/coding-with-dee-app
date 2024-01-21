@@ -8,7 +8,6 @@ export default function ChapterContentScreen() {
    console.log(param,'ChapterContentScreen: ',param.content)
    return param.content && (
       <View>
-         <Text >Course content</Text>
          <Content content={param.content}/>
       </View>
    )
