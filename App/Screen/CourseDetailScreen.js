@@ -25,6 +25,7 @@ export default function CourseDetailScreen() {
   useEffect(()=>{
     isChapterComplete && GetUserEnrolledCourses();
   },[isChapterComplete])
+  
   const UserEnrollCourse = () =>{
     enrollCourse(params.course.id, user.primaryEmailAddress.emailAddress)
     .then(res =>{
