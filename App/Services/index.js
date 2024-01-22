@@ -86,3 +86,25 @@ export const getUserEnrolledCourse = async (courseId, userEmail) =>{
   const result = await request(MASTER_URL, getEnrolledUserQuery);
   return result;
 }
+
+
+export const MarkChapterCompleted = async (chapterId, recordId)=>{
+  const mutationQueryForCC = gql`mutation markChapterCompleted {
+    updateUserEnrolledCourse(
+      data: {completedChapter: {create: {data: {chapterId: "`+chapterId+`"}}}}
+      where: {id: "`+recordId+`"}
+    ) {
+      id
+    }
+    publishManyUserEnrolledCoursesConnection {
+      edges {
+        node {
+          id
+        }
+      }
+    }
+  }
+  `
+  const result = await request(MASTER_URL, mutationQueryForCC);
+  return result;
+}

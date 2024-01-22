@@ -1,17 +1,19 @@
 import { View, Text, TouchableOpacity, ScrollView, ToastAndroid } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { FontAwesome5 } from '@expo/vector-icons';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import DetailSection from '../Components/CourseDetailScreen/DetailSection';
 import ChapterSection from '../Components/CourseDetailScreen/ChapterSection';
 import { enrollCourse, getUserEnrolledCourse } from '../Services';
 import { useUser } from '@clerk/clerk-expo';
+import { CompleteChapterContext } from '../Context/CompletedChapterContex';
 
 export default function CourseDetailScreen() {
   const natigation = useNavigation();
   const params = useRoute().params;
   const [userEnrolledcourse, setUserEnrolledCourse] = useState([]);
   const {user} = useUser();
+  const {isChapterComplete, setIsChapterComplete} = useContext(CompleteChapterContext);
 
   useEffect(() => {
     console.log(params.course)
@@ -20,6 +22,9 @@ export default function CourseDetailScreen() {
     }
   }, [params.course, user]);
 
+  useEffect(()=>{
+    isChapterComplete && GetUserEnrolledCourses();
+  },[isChapterComplete])
   const UserEnrollCourse = () =>{
     enrollCourse(params.course.id, user.primaryEmailAddress.emailAddress)
     .then(res =>{

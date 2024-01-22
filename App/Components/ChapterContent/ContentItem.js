@@ -21,7 +21,7 @@ export default function ContentItem({description, output}) {
       />
       {output!=null? <TouchableOpacity 
             onPress={()=> setIsRun(true)}
-            style={{marginTop:-10, flexDirection:'row-reverse'}}
+            style={{marginTop:-10, flexDirection:'row-reverse', marginRight:206}}
          >
          <Text style={{
             padding:12,
@@ -40,7 +40,7 @@ export default function ContentItem({description, output}) {
             <Text style={{
                fontFamily:'monospace',
                fontSize:21,
-            }}>Output:-</Text>
+            }}>Expected Output:-</Text>
             <RenderHtml
                contentWidth={width}
                source={outputSource}
