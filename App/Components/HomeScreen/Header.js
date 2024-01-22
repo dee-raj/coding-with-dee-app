@@ -1,11 +1,14 @@
 import { View, Text, Image, StyleSheet, TextInput } from 'react-native';
-import React from 'react';
+import React, { useContext } from 'react';
 import { useUser } from '@clerk/clerk-expo';
 import Colors from '../../Utils/Colors';
 import ruCoin from '../../../assets/images/rucoin.png'; 
 import { FontAwesome5 } from '@expo/vector-icons';
+import { UserPointsContext } from '../../Context/UserPointsContext';
 
 export default function Header() {
+  const {userPoints, setUserPoints} = useContext(UserPointsContext);
+  // console.log("User Points: ", userPoints);
   const {isLoaded, isSignedIn, user} = useUser();
   return isLoaded &&(
     <View>
@@ -25,7 +28,7 @@ export default function Header() {
         </View>
         <View style={[{padding:0}, styles.rowStyle]}>
           <Image source={ruCoin} style={{ width:35, height:35,}} />
-          <Text style={styles.mainText}>152</Text>
+          <Text style={styles.mainText}>{userPoints}</Text>
         </View>
       </View>
       <View style={{ 

@@ -7,6 +7,7 @@ import TabNavigation from './App/Navigations/TabNavigation';
 import { CompleteChapterContext } from './App/Context/CompletedChapterContex';
 import { useState } from 'react';
 import * as SecureStore from 'expo-secure-store';
+import { UserPointsContext } from './App/Context/UserPointsContext';
 
 const tokenCache = {
   async getToken(key) {
@@ -30,8 +31,11 @@ const clerkApiKey = 'pk_test_dmVyaWZpZWQtc2F3ZmlzaC04OC5jbGVyay5hY2NvdW50cy5kZXY
 
 export default function App() {
   const [isChapterComplete, setIsChapterComplete] = useState(false);
+  const [userPoints, setUserPoints] = useState(null);
+
   return (
     <ClerkProvider tokenCache={tokenCache} publishableKey={clerkApiKey} >
+      <UserPointsContext.Provider value={{userPoints, setUserPoints}}>
       <CompleteChapterContext.Provider value={{isChapterComplete, setIsChapterComplete}}>
         <View style={styles.container}>
           <SignedIn>
@@ -44,6 +48,7 @@ export default function App() {
           </SignedOut>
         </View>
       </CompleteChapterContext.Provider>
+      </UserPointsContext.Provider>
     </ClerkProvider>
   );
 }

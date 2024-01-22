@@ -1,11 +1,37 @@
 import { View, ScrollView } from 'react-native'
-import React from 'react'
+import React, { useContext, useEffect } from 'react'
 import Header from '../Components/HomeScreen/Header'
 import Colors from '../Utils/Colors';
 import CourseList from '../Components/HomeScreen/CourseList';
-
+import { useAuth, useUser } from '@clerk/clerk-expo';
+import { createNewUser, getUserDetail } from '../Services';
+import { UserPointsContext } from '../Context/UserPointsContext';
 
 export default function HomeScreen() {
+  const {isLoaded, signOut} = useAuth();
+  const {user} = useUser();
+  const {userPoints, setUserPoints} = useContext(UserPointsContext);
+  useEffect(()=>{
+    user && createUser();
+  }, [user])
+
+  const createUser = ()=>{
+    if (user){
+      createNewUser(user.fullName, user.primaryEmailAddress.emailAddress, user.imageUrl)
+      .then(res =>{
+        if(res) GetUser()
+      })
+    }
+  }
+
+  const GetUser = ()=>{
+    getUserDetail(user.primaryEmailAddress.emailAddress)
+    .then(res=>{
+      console.log("--", res.userDetail?.point);
+      setUserPoints(res.userDetail?.point)
+    })
+  }
+
   return (
     <View>
       <ScrollView>
