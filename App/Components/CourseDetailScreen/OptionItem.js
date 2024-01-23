@@ -13,7 +13,7 @@ export default function OptionItem({ icon, value }) {
          marginTop: 10,
       }}>
          <FontAwesome5 name={icon} size={27} color={Colors.dark_primary} />
-         <Text style={{ fontFamily: 'serif', fontSize:19, color:Colors.gray}}>{value}</Text>
+         <Text style={{ fontFamily: 'serif', fontSize: 19, color: Colors.gray }}>{value}</Text>
       </View>
    )
 }

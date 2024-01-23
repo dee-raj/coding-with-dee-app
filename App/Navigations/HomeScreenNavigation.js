@@ -11,7 +11,7 @@ export default function HomeScreenNavigation() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
          <Stack.Screen name='back-home' component={HomeScreen} />
          <Stack.Screen name='course-detail' component={CourseDetailScreen} />
-         <Stack.Screen name='chapter-content' component={ChapterContentScreen}/>
+         <Stack.Screen name='chapter-content' component={ChapterContentScreen} />
       </Stack.Navigator>
    )
 }

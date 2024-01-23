@@ -12,58 +12,58 @@ export default function CourseDetailScreen() {
   const natigation = useNavigation();
   const params = useRoute().params;
   const [userEnrolledcourse, setUserEnrolledCourse] = useState([]);
-  const {user} = useUser();
-  const {isChapterComplete, setIsChapterComplete} = useContext(CompleteChapterContext);
+  const { user } = useUser();
+  const { isChapterComplete, setIsChapterComplete } = useContext(CompleteChapterContext);
 
   useEffect(() => {
     console.log(params.course)
-    if(user && params.course){
+    if (user && params.course) {
       GetUserEnrolledCourses();
     }
   }, [params.course, user]);
 
-  useEffect(()=>{
+  useEffect(() => {
     isChapterComplete && GetUserEnrolledCourses();
-  },[isChapterComplete])
-  
-  const UserEnrollCourse = () =>{
+  }, [isChapterComplete])
+
+  const UserEnrollCourse = () => {
     enrollCourse(params.course.id, user.primaryEmailAddress.emailAddress)
-    .then(res =>{
-      // console.log('created: ',res);
-      if (res){
-        ToastAndroid.show("Course Enrolled successfully!", ToastAndroid.LONG)
-        GetUserEnrolledCourses();
-      }
-    })
+      .then(res => {
+        // console.log('created: ',res);
+        if (res) {
+          ToastAndroid.show("Course Enrolled successfully!", ToastAndroid.LONG)
+          GetUserEnrolledCourses();
+        }
+      })
   };
 
-  const GetUserEnrolledCourses = ()=>{
+  const GetUserEnrolledCourses = () => {
     getUserEnrolledCourse(params.course.id, user.primaryEmailAddress.emailAddress)
-    .then(res =>{
-      console.log(res, "get: ",res.userEnrolledCourses);
-      setUserEnrolledCourse(res.userEnrolledCourses)
-    })
+      .then(res => {
+        console.log(res, "get: ", res.userEnrolledCourses);
+        setUserEnrolledCourse(res.userEnrolledCourses)
+      })
   }
   return params.course && (
     <View>
-      <TouchableOpacity onPress={() => natigation.goBack()} style={{ 
-        margin:5,
+      <TouchableOpacity onPress={() => natigation.goBack()} style={{
+        margin: 5,
         padding: 5,
-        width:'12.8%',
-        height:'6%',
-        borderRadius:40
+        width: '12.8%',
+        height: '6%',
+        borderRadius: 40
       }}>
         <FontAwesome5 name="arrow-circle-left" size={35} color="black" />
       </TouchableOpacity>
-    <ScrollView style={{ padding: 10 }}>
-      <DetailSection course={params.course} 
-        userEnrolledcourse={userEnrolledcourse}
-        enrollCourse={()=>UserEnrollCourse()} 
-      />
-      <ChapterSection chapterList={params.course.chapters} 
-        userEnrolledcourse={userEnrolledcourse}
-      />
-    </ScrollView>
+      <ScrollView style={{ padding: 10 }}>
+        <DetailSection course={params.course}
+          userEnrolledcourse={userEnrolledcourse}
+          enrollCourse={() => UserEnrollCourse()}
+        />
+        <ChapterSection chapterList={params.course.chapters}
+          userEnrolledcourse={userEnrolledcourse}
+        />
+      </ScrollView>
     </View>
   )
 }

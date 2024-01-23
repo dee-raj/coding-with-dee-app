@@ -50,12 +50,12 @@ export default function DetailSection({ course, enrollCourse, userEnrolledcourse
             {/* <Text style={styles.detail}>{course?.description?.markdown}</Text> */}
          </View>
          <View style={styles.rowStyle}>
-            {userEnrolledcourse?.length ==0?
-            <TouchableOpacity 
-               onPress={()=>enrollCourse()} 
-               style={ [{ backgroundColor: Colors.dark_primary }, styles.btn] }>
-               <Text style={styles.btnText}>Enroll for Free</Text>
-            </TouchableOpacity> :null}
+            {userEnrolledcourse?.length == 0 ?
+               <TouchableOpacity
+                  onPress={() => enrollCourse()}
+                  style={[{ backgroundColor: Colors.dark_primary }, styles.btn]}>
+                  <Text style={styles.btnText}>Enroll for Free</Text>
+               </TouchableOpacity> : null}
             <TouchableOpacity style={[{ backgroundColor: Colors.golden }, styles.btn]}>
                <Text style={styles.btnText}>Membership ₹199/month</Text>
             </TouchableOpacity>
@@ -106,11 +106,11 @@ const tagsStyles = {
       fontWeight: 300
    },
    p: {
-      justifyContent:'center',
+      justifyContent: 'center',
    },
-   code:{
+   code: {
       backgroundColor: Colors.bgColor,
-      padding:10,
-      borderRadius:14,
+      padding: 10,
+      borderRadius: 14,
    }
 };

@@ -8,49 +8,49 @@ import { createNewUser, getUserDetail } from '../Services';
 import { UserPointsContext } from '../Context/UserPointsContext';
 
 export default function HomeScreen() {
-  const {isLoaded, signOut} = useAuth();
-  const {user} = useUser();
-  const {userPoints, setUserPoints} = useContext(UserPointsContext);
-  useEffect(()=>{
+  const { isLoaded, signOut } = useAuth();
+  const { user } = useUser();
+  const { userPoints, setUserPoints } = useContext(UserPointsContext);
+  useEffect(() => {
     user && createUser();
   }, [user])
 
-  const createUser = ()=>{
-    if (user){
+  const createUser = () => {
+    if (user) {
       createNewUser(user.fullName, user.primaryEmailAddress.emailAddress, user.imageUrl)
-      .then(res =>{
-        if(res) GetUser()
-      })
+        .then(res => {
+          if (res) GetUser()
+        })
     }
   }
 
-  const GetUser = ()=>{
+  const GetUser = () => {
     getUserDetail(user.primaryEmailAddress.emailAddress)
-    .then(res=>{
-      console.log("--", res.userDetail?.point);
-      setUserPoints(res.userDetail?.point)
-    })
+      .then(res => {
+        console.log("--", res.userDetail?.point);
+        setUserPoints(res.userDetail?.point)
+      })
   }
 
   return (
     <View>
       <ScrollView>
-      <View style={{
-        flex:1,
-        backgroundColor: Colors.primary,
-        height: 250,
-        padding: 20,
-      }}>
-        <Header />
-      </View>
-      <View style={{ padding: 9 }}>
-        <View style={{ marginTop: -90 }}>
-          <CourseList level={"basic"} />
+        <View style={{
+          flex: 1,
+          backgroundColor: Colors.primary,
+          height: 250,
+          padding: 20,
+        }}>
+          <Header />
         </View>
-        <View>
-          <CourseList level={"advance"} />
+        <View style={{ padding: 9 }}>
+          <View style={{ marginTop: -90 }}>
+            <CourseList level={"basic"} />
+          </View>
+          <View>
+            <CourseList level={"advance"} />
+          </View>
         </View>
-      </View>
       </ScrollView>
     </View>
   )

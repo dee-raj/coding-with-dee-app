@@ -11,16 +11,16 @@ import { UserPointsContext } from './App/Context/UserPointsContext';
 
 const tokenCache = {
   async getToken(key) {
-    try{
+    try {
       return SecureStore.getItemAsync(key);
-    }catch(err){
+    } catch (err) {
       return null;
     }
   },
   saveToken(key, value) {
-    try{
+    try {
       return SecureStore.setItemAsync(key, value);
-    } catch(err){
+    } catch (err) {
       return;
     }
   },
@@ -35,19 +35,19 @@ export default function App() {
 
   return (
     <ClerkProvider tokenCache={tokenCache} publishableKey={clerkApiKey} >
-      <UserPointsContext.Provider value={{userPoints, setUserPoints}}>
-      <CompleteChapterContext.Provider value={{isChapterComplete, setIsChapterComplete}}>
-        <View style={styles.container}>
-          <SignedIn>
-            <NavigationContainer>
-              <TabNavigation/>
-            </NavigationContainer>
-          </SignedIn>
-          <SignedOut>
-            <LoginScreen/>
-          </SignedOut>
-        </View>
-      </CompleteChapterContext.Provider>
+      <UserPointsContext.Provider value={{ userPoints, setUserPoints }}>
+        <CompleteChapterContext.Provider value={{ isChapterComplete, setIsChapterComplete }}>
+          <View style={styles.container}>
+            <SignedIn>
+              <NavigationContainer>
+                <TabNavigation />
+              </NavigationContainer>
+            </SignedIn>
+            <SignedOut>
+              <LoginScreen />
+            </SignedOut>
+          </View>
+        </CompleteChapterContext.Provider>
       </UserPointsContext.Provider>
     </ClerkProvider>
   );
@@ -59,6 +59,6 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop:30,
+    marginTop: 30,
   },
 });

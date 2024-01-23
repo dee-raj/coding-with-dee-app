@@ -16,23 +16,23 @@ export default function CourseList({ level }) {
    const getCourses = () => {
       getCourseList(level)
          .then(res => {
-            console.log(`Response`, res);
+            console.log(`\nCourse List Response: ${res}`);
             setCouseList(res?.courses);
          })
    }
    return (
       <View>
-         <SubHeading text={level+' Courses'} color={level=='basic' && Colors.white}/>
+         <SubHeading text={level + ' Courses'} color={level == 'basic' && Colors.white} />
          <FlatList
             data={courseList}
             key={courseList.id}
             horizontal={true}
             showsHorizontalScrollIndicator={false}
             renderItem={({ item }) => (
-               <TouchableOpacity onPress={()=>navigation.navigate('course-detail',{
-                  course:item
+               <TouchableOpacity onPress={() => navigation.navigate('course-detail', {
+                  course: item
                })}>
-                  <CourseItem item={item}/>
+                  <CourseItem item={item} />
                </TouchableOpacity>
             )}
          />

@@ -14,7 +14,7 @@ export default function CourseItem({ item }) {
       }}>
          <Image source={{ uri: item?.banner?.url }}
             style={{
-               width: "100%", 
+               width: "100%",
                height: 202,
                borderRadius: 15
             }} />
@@ -48,19 +48,19 @@ export default function CourseItem({ item }) {
    )
 }
 const styles = StyleSheet.create({
-   rowStyles:{
+   rowStyles: {
       display: 'flex',
       flexDirection: 'row',
-      alignItems:'center',
-      justifyContent:'space-between',
-      gap:7,
+      alignItems: 'center',
+      justifyContent: 'space-between',
+      gap: 7,
       marginTop: 5,
    },
-   feeStyle:{
+   feeStyle: {
       display: 'flex',
       flexDirection: 'row',
-      alignItems:'center',
-      gap:10,
+      alignItems: 'center',
+      gap: 10,
       marginTop: 10,
    }
 });
