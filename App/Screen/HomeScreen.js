@@ -6,6 +6,7 @@ import CourseList from '../Components/HomeScreen/CourseList';
 import { useAuth, useUser } from '@clerk/clerk-expo';
 import { createNewUser, getUserDetail } from '../Services';
 import { UserPointsContext } from '../Context/UserPointsContext';
+import CourseProgress from '../Components/HomeScreen/CourseProgress';
 
 export default function HomeScreen() {
   const { isLoaded, signOut } = useAuth();
@@ -45,6 +46,7 @@ export default function HomeScreen() {
         </View>
         <View style={{ padding: 9 }}>
           <View style={{ marginTop: -90 }}>
+            <CourseProgress />
             <CourseList level={"basic"} />
           </View>
           <View>

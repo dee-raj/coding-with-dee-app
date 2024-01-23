@@ -168,3 +168,49 @@ export const GetAllUser = async () => {
   `
   return await request(MASTER_URL, userDetailQuery);
 }
+
+
+export const GetAllProgressCourse = async (userEmail) => {
+  const checkInProgressQuery = gql`
+  query GetAllEnrollProgressCourse {
+    userEnrolledCourses(where: {userEmail: "`+ userEmail + `"}) {
+      completedChapter {
+        chapterId
+      }
+      course {
+        banner {
+          url
+        }
+        chapters {
+          id
+          title
+          content {
+            heading
+            description {
+              html
+              markdown
+            }
+            output {
+              html
+              markdown
+            }
+          }
+        }
+        description {
+          html
+          markdown
+        }
+        id
+        level
+        name
+        price
+        time
+        tags
+        author
+      }
+    }
+  }
+  
+  `
+  return await request(MASTER_URL, checkInProgressQuery);
+}
