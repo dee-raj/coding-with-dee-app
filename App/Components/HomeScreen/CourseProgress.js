@@ -20,7 +20,7 @@ export default function CourseProgress() {
          setProgressCourseList(res?.userEnrolledCourses);
       })
    }
-   return progressCourseList&&(
+   return progressCourseList && (
       <View>
          <SubHeading text={"In Progress"} color={Colors.white} />
          <FlatList
