@@ -30,6 +30,7 @@
       "clerk": {
         "apiKey": "pk_test_dmVyaWZpZWQtc2F3ZmlzaC04OC5jbGVyay5hY2NvdW50cy5kZXYk"
       }
-    }
+    },
+    "schema":"exp://"
   }
 }

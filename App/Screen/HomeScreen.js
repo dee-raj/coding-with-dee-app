@@ -28,7 +28,6 @@ export default function HomeScreen() {
   const GetUser = () => {
     getUserDetail(user.primaryEmailAddress.emailAddress)
       .then(res => {
-        console.log("--", res.userDetail?.point);
         setUserPoints(res.userDetail?.point)
       })
   }

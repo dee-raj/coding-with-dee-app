@@ -16,13 +16,13 @@ export default function CourseList({ level }) {
    const getCourses = () => {
       getCourseList(level)
          .then(res => {
-            console.log(`\nCourse List Response: ${res}`);
+            // console.log(`\nCourse List Response: ${res}`);
             setCouseList(res?.courses);
          })
    }
    return (
       <View>
-         <SubHeading text={level + ' Courses'} color={level == 'basic' && Colors.white} />
+         <SubHeading text={level + ' Courses'} color={level == 'basic' && Colors.dark_primary} />
          <FlatList
             data={courseList}
             key={courseList.id}

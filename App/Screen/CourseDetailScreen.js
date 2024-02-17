@@ -16,7 +16,6 @@ export default function CourseDetailScreen() {
   const { isChapterComplete, setIsChapterComplete } = useContext(CompleteChapterContext);
 
   useEffect(() => {
-    console.log(params.course)
     if (user && params.course) {
       GetUserEnrolledCourses();
     }
@@ -29,7 +28,6 @@ export default function CourseDetailScreen() {
   const UserEnrollCourse = () => {
     enrollCourse(params.course.id, user.primaryEmailAddress.emailAddress)
       .then(res => {
-        // console.log('created: ',res);
         if (res) {
           ToastAndroid.show("Course Enrolled successfully!", ToastAndroid.LONG)
           GetUserEnrolledCourses();
@@ -40,7 +38,6 @@ export default function CourseDetailScreen() {
   const GetUserEnrolledCourses = () => {
     getUserEnrolledCourse(params.course.id, user.primaryEmailAddress.emailAddress)
       .then(res => {
-        console.log(res, "get: ", res.userEnrolledCourses);
         setUserEnrolledCourse(res.userEnrolledCourses)
       })
   }

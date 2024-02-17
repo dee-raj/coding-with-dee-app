@@ -16,8 +16,8 @@ export default function ChapterContentScreen() {
    // ChapterId
    // RecordId
    useEffect(() => {
-      console.log("ChapterId: ", param.chapterId);
-      console.log("RecordId: ", param.userCourseRecordId);
+      // console.log("ChapterId: ", param.chapterId);
+      // console.log("RecordId: ", param.userCourseRecordId);
    }, [param])
    const onChapterFinish = () => {
       const totalPoints = Number(userPoints) + param.content?.length * 10;
@@ -29,7 +29,7 @@ export default function ChapterContentScreen() {
                navigation.goBack();
             }
             // console.log("\nupdated Points",res.updateUserDetail?.point);
-            console.log(res);
+            // console.log(res);
          })
       getUserDetail(user.primaryEmailAddress.emailAddress)
          .then(res => {

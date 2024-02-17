@@ -1,6 +1,5 @@
 import { View, Text, FlatList, Image, StyleSheet, ScrollView } from 'react-native'
 import React, { useEffect, useState } from 'react'
-import { FontAwesome5 } from '@expo/vector-icons';
 import { GetAllUser } from '../Services';
 import Colors from '../Utils/Colors';
 import first from '../../assets/images/first.png';
@@ -9,14 +8,12 @@ import third from '../../assets/images/third.png';
 
 export default function LeaderBoard() {
   const [userList, setUserList] = useState([]);
-  console.log('User List: ', userList);
   useEffect(() => {
     getAllUserDetails();
   }, [])
 
   const getAllUserDetails = () => {
     GetAllUser().then(res => {
-      console.log('\n\n\nleaderBoard:', res);
       setUserList(res?.userDetails);
     })
   }

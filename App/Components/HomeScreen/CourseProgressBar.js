@@ -3,7 +3,7 @@ import React from 'react'
 import Colors from '../../Utils/Colors'
 
 export default function CourseProgressBar({ totalChapter, completedChapter }) {
-   console.log(`\n\ntotal=${totalChapter}\t completedChapter=${completedChapter}`)
+   // console.log(`\n\ntotal=${totalChapter}\t completedChapter=${completedChapter}`)
    const width = (completedChapter / totalChapter) * 100 + "%";
    return (
       <View style={{
