@@ -8,7 +8,8 @@ export default function SubHeading({ text, color = Colors.dark_primary }) {
       <Text style={{
         fontFamily: 'monospace',
         fontSize: 28,
-        color: color
+        color: color,
+        textTransform:"capitalize"
       }}> {text} </Text>
     </View>
   )

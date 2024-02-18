@@ -50,15 +50,23 @@ export default function DetailSection({ course, enrollCourse, userEnrolledcourse
             {/* <Text style={styles.detail}>{course?.description?.markdown}</Text> */}
          </View>
          <View style={styles.rowStyle}>
-            {userEnrolledcourse?.length == 0 ?
-               <TouchableOpacity
-                  onPress={() => enrollCourse()}
-                  style={[{ backgroundColor: Colors.dark_primary }, styles.btn]}>
-                  <Text style={styles.btnText}>Enroll for Free</Text>
-               </TouchableOpacity> : null}
-            <TouchableOpacity style={[{ backgroundColor: Colors.golden }, styles.btn]}>
-               <Text style={styles.btnText}>Membership ₹199/month</Text>
-            </TouchableOpacity>
+            {course?.price==0?
+               <View style={ styles.btn }>
+                  {userEnrolledcourse?.length == 0 ?
+                     <TouchableOpacity
+                     onPress={() => enrollCourse()}
+                     style={[{ backgroundColor: Colors.dark_primary }, styles.btn]}>
+                        <Text style={styles.btnText}>Enroll for Free</Text>
+                     </TouchableOpacity> : null}
+               </View>
+            :
+               <View>
+                  {userEnrolledcourse?.length == 0 ?
+                  <TouchableOpacity style={[{ backgroundColor: Colors.golden }, styles.btn]}>
+                     <Text style={styles.btnText}> Membership only at ₹199/month</Text>
+                  </TouchableOpacity> : null}
+               </View>
+            }
          </View>
       </View>
    )
@@ -90,13 +98,15 @@ const styles = StyleSheet.create({
    btn: {
       padding: 8,
       borderRadius: 15,
-      marginRight: 5
+      width:"100%",
+      height:"auto",
+      alignItems:'center'
    },
    btnText: {
       fontFamily: 'Roboto',
       textAlign: 'center',
       color: Colors.light_white,
-      fontSize: 17
+      fontSize: 20
    }
 });
 const tagsStyles = {

@@ -45,7 +45,7 @@ export default function ChapterSection({ chapterList, userEnrolledcourse }) {
             fontSize: 22
          }}>Chapters</Text>
          {chapterList.map((item, index) => (
-            <TouchableOpacity style={[checkIsChapterCompleted(item.id)
+            <TouchableOpacity key={item.id} style={[checkIsChapterCompleted(item.id)
                ? styles.CompleteChapter
                : styles.inCompleteChapter]}
                onPress={() => OnChapterPress(item)}>

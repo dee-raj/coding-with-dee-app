@@ -16,7 +16,7 @@ export default function MyCourse() {
   }, [user, setProgressCourseList])
   const GetAllProgressCourseList = () => {
     GetAllProgressCourse(user.primaryEmailAddress.emailAddress).then((res) => {
-      console.log(res, "\nGetAllEnrollProgressCourse:", res?.userEnrolledCourses);
+      // console.log(res, "\nGetAllEnrollProgressCourse:", res?.userEnrolledCourses);
       setProgressCourseList(res?.userEnrolledCourses);
     })
   }

@@ -4,10 +4,10 @@ import Colors from '../../Utils/Colors'
 
 export default function CourseProgressBar({ totalChapter, completedChapter }) {
    // console.log(`\n\ntotal=${totalChapter}\t completedChapter=${completedChapter}`)
-   const width = (completedChapter / totalChapter) * 100 + "%";
+   const width = (completedChapter / totalChapter) * 79 + "%";
    return (
       <View style={{
-         width: '100%',
+         width: '97%',
          height: 7,
          backgroundColor: Colors.gray,
          borderRadius: 99

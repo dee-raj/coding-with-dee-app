@@ -1,6 +1,6 @@
 import { request, gql } from 'graphql-request';
-// const MASTER_URL = process.env.Master_URL;
-const MASTER_URL = "https://api-ap-south-1.hygraph.com/v2/clr55xt303asb01uq3aikvguz/master";
+import config from '../../config';
+const MASTER_URL = config.DATABASE_MASTER_URL;
 
 export const getCourseList = async (level) => {
   const query = gql`

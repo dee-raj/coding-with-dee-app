@@ -8,6 +8,7 @@ import { CompleteChapterContext } from './App/Context/CompletedChapterContex';
 import { useState } from 'react';
 import * as SecureStore from 'expo-secure-store';
 import { UserPointsContext } from './App/Context/UserPointsContext';
+import config from './config';
 
 const tokenCache = {
   async getToken(key) {
@@ -26,8 +27,7 @@ const tokenCache = {
   },
 };
 
-// const clerkApiKey = process.env.CLERK_EXPO_PUBLISHABLE_KEY;
-const clerkApiKey = 'pk_test_dmVyaWZpZWQtc2F3ZmlzaC04OC5jbGVyay5hY2NvdW50cy5kZXYk';
+const clerkApiKey = config.CLERK_EXPO_PUBLISHABLE_KEY;
 
 export default function App() {
   const [isChapterComplete, setIsChapterComplete] = useState(false);
