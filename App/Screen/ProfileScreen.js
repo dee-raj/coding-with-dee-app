@@ -1,175 +1,150 @@
-import { View, Text, Button, Image,TextInput, StyleSheet, TouchableOpacity, Switch } from 'react-native';
+import { MaterialIcons, Entypo } from '@expo/vector-icons';
+import myImage from './../../assets/adaptive-icon.png'
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  ScrollView,
+} from 'react-native';
 import { useClerk, useUser } from '@clerk/clerk-expo';
 import Colors from '../Utils/Colors';
-import React, { useState, useEffect } from 'react';
-
-// import * as ImagePicker from 'expo-image-picker';
-const ProfilePicture = ({ imageUrl, onImageChange }) => {
-  // Implement image upload logic using ImagePicker
-  return (
-    <TouchableOpacity onPress={onImageChange}>
-      <Image source={{ uri: imageUrl }} style={styles.profImg} />
-    </TouchableOpacity>
-  );
-};
-
-const BioSection = ({ bio, onChangeBio  }) => {
-  return (
-    <View style={{ marginVertical: 10, display:'flex', flexDirection:'row'}}>
-      <Text style={{ fontWeight: 'bold'}}>Bio:{bio}</Text>
-    </View>
-  );
-};
-
-// const PersonalInfoForm = ({ initialValues, onSubmit }) => {
-//   const { values, handleChange, handleSubmit } = useState({
-//     initialValues,
-//     onSubmit,
-//   });
-
-//   return (
-//     <View onSubmit={handleSubmit}>
-//       <TextInput value={values.name} onChangeText={handleChange("name")} placeholder="Name" />
-//       <TextInput value={values.email} onChangeText={handleChange("email")} placeholder="Email" />
-//       {/* ...other fields */}
-//       <Button title="Save Changes" onPress={handleSubmit} />
-//     </View>
-//   );
-// };
-const PersonalInfoField = ({ label, value, onChangeText}) =>{
-  return (
-    <View>
-      <Text>Label: {label}</Text>
-      <Text>value: {value}</Text>
-      <Text>onChangeText: {onChangeText}</Text>
-    </View>
-  )
-};
-
-const ContactInfoSection = ({
-  phone,
-  website,
-  setPhone,
-  setWebsite,
-  privacyEnabled,
-  setPrivacyEnabled,
-}) => {
-  return (
-    <View>
-      <PersonalInfoField label="Phone Number (optional)" value={phone} onChangeText={setPhone} />
-      <PersonalInfoField label="Website (optional)" value={website} onChangeText={setWebsite} />
-      <View style={{ flexDirection: 'row', alignItems: 'center', marginVertical: 5 }}>
-        <Switch value={privacyEnabled} onValueChange={setPrivacyEnabled} />
-        <Text style={{ marginLeft: 10 }}>Share website publicly</Text>
-      </View>
-    </View>
-  );
-};
-
-const PrivacySettings = ({ settings, onSettingChange }) => {
-  // Render toggles or options for different privacy settings
-  // Implement logic to update user settings
-  return (
-    <View style={{marginVertical:10}}>
-      {/* Render privacy setting options based on your requirements */}
-      <Text>Privacy logic will be here</Text>
-    </View>
-  );
-};
-
-
-const SecuritySettings = ({ changePassword, enableMFA }) => {
-  // Implement logic for password change and MFA functions
-  return (
-    <View>
-      <TouchableOpacity onPress={changePassword}>
-        <Text>Change Password</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={enableMFA}>
-        <Text>Enable Multi-Factor Authentication</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
-const ActionButtons = ({ editProfile, saveChanges, logout }) => {
-  return (
-    <View style={{ flexDirection: 'row', justifyContent: 'space-between' }}>
-      <TouchableOpacity onPress={editProfile}>
-        <Text>Edit Profile</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={saveChanges}>
-        <Text>Save Changes</Text>
-      </TouchableOpacity>
-      <TouchableOpacity onPress={logout}>
-        <Text>Logout</Text>
-      </TouchableOpacity>
-    </View>
-  );
-};
-
+import { useContext, useEffect, useState } from 'react';
+import { UserPointsContext } from '../Context/UserPointsContext';
+import { useNavigation } from '@react-navigation/native';
 
 export default function ProfileScreen() {
+  const { userPoints, setUserPoints } = useContext(UserPointsContext);
   const { isLoaded, user } = useUser();
   const { signOut } = useClerk();
+  const navigation = useNavigation();
 
-  const [email, setEmail] = useState('');
-  const [institution, setInstitution] = useState('');
-  const [bio, setBio] = useState('hey, there!');
-  // Fetch user data if needed
-  const [userData, setUserData] = useState(null);
+  const Ranking = () => {
+    return (
+      <View >
+        <TouchableOpacity onPress={() => navigation.navigate('leaderboard')}
+          style={styles.touchBtn}>
+          <Entypo name="bar-graph" size={24} color="black" />
+          <Text style={styles.textStyle}>my Ranking?</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
+  const MyCourse = () => {
+    return (
+      <View >
+        <TouchableOpacity onPress={() => navigation.navigate('my-course')}
+          style={styles.touchBtn}>
+          <MaterialIcons name="library-books" size={24} color="black" />
+          <Text style={styles.textStyle}>My Coueses</Text>
+        </TouchableOpacity>
+      </View>
+    )
+  }
 
-  useEffect(() => {
-  }, []);
+  const SignOutButtonView = () => {
+    return (
+      <View>
+        <TouchableOpacity onPress={handleSignOut} style={styles.touchBtn}>
+          <Text style={styles.textStyle}>Sign Out</Text>
+          <Entypo name="log-out" size={24} color="black" />
+        </TouchableOpacity>
+      </View>
+    )
+  };
 
   const handleSignOut = async () => {
     try {
       await signOut();
-      // Redirect to login screen or handle the signed-out state as needed
     } catch (error) {
       console.error("Error signing out:", error);
-      // Handle potential errors, like network issues
     }
   };
 
   return isLoaded && (
     <View>
-      <View style={{padding:20, backgroundColor:'#21fae0'}}>
-        <View>
-          <ProfilePicture imageUrl={user?.imageUrl} />
-          {userData ? (
-            <View>
-              <PersonalInfoForm initialValues={userData} onSubmit={ActionButtons} />
-            </View>
-          ) : (
-            <Text>Loading profile...</Text>
-          )}
+      <Text style={{
+        paddingLeft: 100,
+        fontFamily: "monospace",
+        fontWeight: '600',
+        fontSize: 25,
+        height: 32
+      }}>MY PROFILE</Text>
+      <View style={{ padding: 10, backgroundColor: Colors.navBar_bg, margin: 10 }}>
+        <View style={styles.rowStyles}>
+          <Image
+            source={{ uri: user?.imageUrl }}
+            style={styles.profImg}
+          />
+          <Text style={styles.textStyle}>{user?.fullName}</Text>
         </View>
-      <View>
-        <BioSection bio={bio}/>
-        <ContactInfoSection />
-        {/* <PersonalInfoForm /> */}
-        <SecuritySettings/>
-        <PrivacySettings/>
+        <Text style={{
+          paddingLeft: 132,
+          marginBottom: -10,
+          color: Colors.white,
+          ...styles.textStyle
+        }}>Points:{userPoints}</Text>
       </View>
-      </View>
-        <View>
-          <TouchableOpacity onPress={handleSignOut} style={{
-            backgroundColor:'gray', 
-            padding:10, 
-            margin:10,
-          }}>
-            <Text style={{color: Colors.white}}>Sign Out</Text>
-          </TouchableOpacity>
-        </View>
+      <ScrollView style={{ paddingLeft: 50 }}>
+        <Ranking />
+        <MyCourse />
+        <Image
+          style={styles.imageStyle}
+          source={myImage}
+        />
+        <SignOutButtonView />
+      </ScrollView>
     </View>
   );
 }
 
 const styles = StyleSheet.create({
   profImg: {
-    width: 100, 
-    height: 100, 
-    borderRadius: 50 
+    width: 70,
+    height: 70,
+    borderRadius: 40
+  },
+  rowStyles: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    alignItems: 'center',
+    borderRadius: 50,
+  },
+  textStyle: {
+    fontFamily: 'Roboto',
+    fontSize: 24,
+    fontWeight: '800',
+    color: Colors.red_
+  },
+  touchBtn: {
+    backgroundColor: Colors.light_white,
+    padding: 10,
+    margin: 10,
+    borderRadius: 9,
+    alignItems: 'center',
+    flexDirection: 'row',
+    gap: 10,
+    justifyContent: 'space-evenly',
+    width: '70%'
+  },
+  rankingStyle: {
+    backgroundColor: Colors.bgColor,
+    height: 56,
+    color: Colors.black,
+    alignItems: 'center',
+    padding: 10,
+    margin: 10
+  },
+  courseStyle: {
+    backgroundColor: Colors.light_white,
+    height: 78,
+    alignItems: 'center',
+    margin: 10
+  },
+  imageStyle: {
+    width: 320,
+    height: 320,
+    objectFit: 'contain'
   }
-})
+});

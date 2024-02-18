@@ -8,5 +8,7 @@ export default {
    bgColor: "#cacaed",
    light_green: "#8ed477",
    golden: '#b58605',
-   light_white: '#eae1f7'
+   light_white: '#eae1f7',
+   navBar_bg: '#21f1e0',
+   red_:'#e90a5a'
 }
