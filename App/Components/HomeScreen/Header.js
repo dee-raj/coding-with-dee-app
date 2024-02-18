@@ -3,8 +3,8 @@ import React, { useContext } from 'react';
 import { useUser } from '@clerk/clerk-expo';
 import Colors from '../../Utils/Colors';
 import ruCoin from '../../../assets/images/rucoin.png';
-import { FontAwesome5 } from '@expo/vector-icons';
 import { UserPointsContext } from '../../Context/UserPointsContext';
+import SearchBar from './SearchBar';
 
 export default function Header() {
   const { userPoints, setUserPoints } = useContext(UserPointsContext);
@@ -31,23 +31,7 @@ export default function Header() {
           <Text style={styles.mainText}>{userPoints}</Text>
         </View>
       </View>
-      <View style={{
-        backgroundColor: Colors.white,
-        paddingLeft: 15,
-        borderRadius: 93,
-        marginTop: 25,
-        display: 'flex',
-        flexDirection: 'row',
-        justifyContent: 'space-evenly'
-      }}>
-        <FontAwesome5 name="search" size={35} color={Colors.black} />
-        <TextInput placeholder=' Search Courses...' style={{
-          fontSize: 29,
-          fontFamily: 'sans-serif',
-          width: '80%'
-        }} />
       </View>
-    </View>
   )
 }
 

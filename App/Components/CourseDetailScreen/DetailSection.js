@@ -3,8 +3,10 @@ import React from 'react';
 import Colors from '../../Utils/Colors';
 import OptionItem from './OptionItem';
 import RenderHtml from 'react-native-render-html';
+import { useNavigation } from '@react-navigation/native';
 
 export default function DetailSection({ course, enrollCourse, userEnrolledcourse }) {
+   const navigation = useNavigation();
    const { width } = useWindowDimensions();
    const descriptionSource = {
       html: course?.description?.html
@@ -62,7 +64,12 @@ export default function DetailSection({ course, enrollCourse, userEnrolledcourse
             :
                <View>
                   {userEnrolledcourse?.length == 0 ?
-                  <TouchableOpacity style={[{ backgroundColor: Colors.golden }, styles.btn]}>
+                  <TouchableOpacity 
+                     style={[{ backgroundColor: Colors.golden }, styles.btn]}
+                     onPress={() => navigation.navigate('make-member', {
+                        course: course
+                      })}
+                  >
                      <Text style={styles.btnText}> Membership only at ₹199/month</Text>
                   </TouchableOpacity> : null}
                </View>

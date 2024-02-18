@@ -11,18 +11,23 @@ export default function CourseProgress() {
    const navigation = useNavigation();
    const { user } = useUser();
    const [progressCourseList, setProgressCourseList] = useState();
+
    useEffect(() => {
       user && GetAllProgressCourseList();
-   }, [user, setProgressCourseList])
+   }, [user, setProgressCourseList]);
+
    const GetAllProgressCourseList = () => {
       GetAllProgressCourse(user.primaryEmailAddress.emailAddress).then((res) => {
          // console.log(res, "\nGetAllEnrollProgressCourse:", res?.userEnrolledCourses);
          setProgressCourseList(res?.userEnrolledCourses);
       })
-   }
+   };
+
    return progressCourseList && (
       <View>
-         <SubHeading text={"In Progress"} color={Colors.white} />
+         {progressCourseList.length <= 0? null:
+            <SubHeading text={"In Progress"} color={Colors.black} />
+         }
          <FlatList
             data={progressCourseList}
             horizontal={true}

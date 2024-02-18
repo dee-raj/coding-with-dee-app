@@ -42,6 +42,44 @@ export const getCourseList = async (level) => {
   return result;
 }
 
+export const FindAllCourses = async () =>{
+  const FindCourses = gql`query FinfCourses {
+    courses {
+      id
+      banner {
+        url
+      }
+      name
+      price
+      level
+      tags
+      time
+      author
+      description {
+        markdown
+        html
+      }
+      chapters {
+        title
+        id
+        content {
+          heading
+          description {
+            markdown
+            html
+          }
+          output {
+            markdown
+            html
+          }
+        }
+      }
+    }
+  }
+  `
+  return await request(MASTER_URL, FindCourses)
+}
+
 export const enrollCourse = async (courseID, userEmail) => {
   const mutationQuery = gql`
   mutation MyMutation {
