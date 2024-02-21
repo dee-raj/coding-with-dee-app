@@ -25,7 +25,7 @@ export default function CourseProgress() {
 
    return progressCourseList && (
       <View>
-         {progressCourseList.length <= 0? null:
+         {progressCourseList.length <= 0 ? null :
             <SubHeading text={"In Progress"} color={Colors.black} />
          }
          <FlatList

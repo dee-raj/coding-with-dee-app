@@ -16,13 +16,13 @@ export default function ProgressBar({ contentLength, contentIndex }) {
       {arraySize.map((item, index) => (
         <View key={index} // Using index as the key for simplicity
           style={{
-          backgroundColor: `${index <= contentIndex ? Colors.primary : Colors.gray }`,
-          width: width + "%",
-          height: 10,
-          borderRadius: 10,
-          margin: 5,
-          flex: 1
-        }}></View>
+            backgroundColor: `${index <= contentIndex ? Colors.primary : Colors.gray}`,
+            width: width + "%",
+            height: 10,
+            borderRadius: 10,
+            margin: 5,
+            flex: 1
+          }}></View>
       ))}
     </View>
   )

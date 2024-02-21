@@ -31,7 +31,7 @@ export default function Header() {
           <Text style={styles.mainText}>{userPoints}</Text>
         </View>
       </View>
-      </View>
+    </View>
   )
 }
 

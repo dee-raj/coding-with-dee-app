@@ -4,6 +4,7 @@ import Colors from '../../Utils/Colors';
 import OptionItem from './OptionItem';
 import RenderHtml from 'react-native-render-html';
 import { useNavigation } from '@react-navigation/native';
+import { FontAwesome5 } from '@expo/vector-icons';
 
 export default function DetailSection({ course, enrollCourse, userEnrolledcourse }) {
    const navigation = useNavigation();
@@ -52,26 +53,26 @@ export default function DetailSection({ course, enrollCourse, userEnrolledcourse
             {/* <Text style={styles.detail}>{course?.description?.markdown}</Text> */}
          </View>
          <View style={styles.rowStyle}>
-            {course?.price==0?
-               <View style={ styles.btn }>
+            {course?.price == 0 ?
+               <View style={styles.btn}>
                   {userEnrolledcourse?.length == 0 ?
                      <TouchableOpacity
-                     onPress={() => enrollCourse()}
-                     style={[{ backgroundColor: Colors.dark_primary }, styles.btn]}>
+                        onPress={() => enrollCourse()}
+                        style={[{ backgroundColor: Colors.dark_primary }, styles.btn]}>
                         <Text style={styles.btnText}>Enroll for Free</Text>
                      </TouchableOpacity> : null}
                </View>
-            :
+               :
                <View>
                   {userEnrolledcourse?.length == 0 ?
-                  <TouchableOpacity 
-                     style={[{ backgroundColor: Colors.golden }, styles.btn]}
-                     onPress={() => navigation.navigate('make-member', {
-                        course: course
-                      })}
-                  >
-                     <Text style={styles.btnText}> Membership only at ₹199/month</Text>
-                  </TouchableOpacity> : null}
+                     <TouchableOpacity
+                        style={[{ backgroundColor: Colors.light_green }, styles.btn]}
+                        onPress={() => navigation.navigate('make-member', {
+                           course: course
+                        })}
+                     >
+                        <Text style={{ ...styles.btnText, color: Colors.golden }}>Unlock & Get Started at <FontAwesome5 name="rupee-sign" size={20} color={Colors.golden} />{course?.price} only</Text>
+                     </TouchableOpacity> : null}
                </View>
             }
          </View>
@@ -105,15 +106,17 @@ const styles = StyleSheet.create({
    btn: {
       padding: 8,
       borderRadius: 15,
-      width:"100%",
-      height:"auto",
-      alignItems:'center'
+      width: "100%",
+      height: "auto",
+      alignItems: 'center'
    },
    btnText: {
       fontFamily: 'Roboto',
       textAlign: 'center',
       color: Colors.light_white,
-      fontSize: 20
+      fontSize: 19,
+      marginHorizontal: 10,
+      fontWeight: '800'
    }
 });
 const tagsStyles = {

@@ -2,6 +2,7 @@ import { View, Text, useWindowDimensions, ScrollView, TouchableOpacity } from 'r
 import React, { useState } from 'react'
 import RenderHtml from 'react-native-render-html';
 import Colors from '../../Utils/Colors';
+import { MaterialIcons } from '@expo/vector-icons';
 
 export default function ContentItem({ description, output }) {
    const { width } = useWindowDimensions();
@@ -19,21 +20,29 @@ export default function ContentItem({ description, output }) {
             source={descriptionSource}
             tagsStyles={tagsStyles}
          />
-         {output != null ? <TouchableOpacity
-            onPress={() => setIsRun(true)}
-            style={{ marginTop: -10, flexDirection: 'row-reverse', marginRight: 206 }}
-         >
-            <Text style={{
-               padding: 12,
-               backgroundColor: Colors.primary,
-               borderRadius: 10,
-               fontFamily: 'Roboto',
-               fontSize: 18,
-               color: Colors.white,
-               textAlign: 'center',
-               width: 100,
-            }}>Run</Text>
-         </TouchableOpacity>
+         {output != null ?
+            <View style={tagsStyles.runBtn}>
+               <TouchableOpacity
+                  onPress={() => setIsRun(true)}
+                  style={{
+                     marginTop: -10,
+                     flexDirection: 'row-reverse',
+                     marginRight: 206,
+                     backgroundColor: Colors.primary,
+                     justifyContent: 'space-around',
+                     alignItems: 'center',
+                     borderRadius: 10,
+                     padding: 12,
+                  }}>
+                  <Text style={{
+                     fontFamily: 'Roboto',
+                     fontSize: 22,
+                     color: Colors.white,
+                     textAlign: 'center',
+                  }}>Run</Text>
+                  <MaterialIcons name="play-circle-outline" size={24} color={isRun ? Colors.white : Colors.gray} />
+               </TouchableOpacity>
+            </View>
             : null}
          {isRun ?
             <>
@@ -63,5 +72,8 @@ const tagsStyles = {
       padding: 15,
       fontSize: 13,
       borderRadius: 15
+   },
+   runBtn: {
+
    }
 }

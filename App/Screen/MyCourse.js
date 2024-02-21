@@ -20,6 +20,9 @@ export default function MyCourse() {
       setProgressCourseList(res?.userEnrolledCourses);
     })
   }
+
+  // console.log(`My-COURSE LIST: ${progressCourseList} \n ${progressCourseList?.course}`);
+
   return (
     <View>
       <View style={{

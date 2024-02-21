@@ -6,6 +6,7 @@ import MyCourse from '../Screen/MyCourse';
 import { Text, View } from 'react-native';
 import { FontAwesome5, MaterialIcons, Ionicons } from '@expo/vector-icons';
 import HomeScreenNavigation from './HomeScreenNavigation';
+import AboutDeeScreen from '../Screen/AboutDeeScreen';
 
 const Tab = createBottomTabNavigator();
 export default function TabNavigation() {
@@ -40,6 +41,16 @@ export default function TabNavigation() {
             tabBarLabel: 'My Course',
             tabBarIcon: ({ color, size }) => (
               <FontAwesome5 name="book" size={size} color={color} />
+            )
+          }}
+        />
+        <Tab.Screen
+          name="about-dee"
+          component={AboutDeeScreen}
+          options={{
+            tabBarLabel: 'About Dee',
+            tabBarIcon: ({ color, size }) => (
+              <FontAwesome5 name="info" size={size} color={color} />
             )
           }}
         />
