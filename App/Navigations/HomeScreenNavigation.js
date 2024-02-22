@@ -5,6 +5,7 @@ import HomeScreen from '../Screen/HomeScreen';
 import CourseDetailScreen from '../Screen/CourseDetailScreen';
 import ChapterContentScreen from '../Screen/ChapterContentScreen';
 import Membership from '../Screen/Membership';
+import AboutDeeScreen from '../Screen/AboutDeeScreen';
 
 const Stack = createStackNavigator();
 export default function HomeScreenNavigation() {
@@ -14,6 +15,7 @@ export default function HomeScreenNavigation() {
          <Stack.Screen name='course-detail' component={CourseDetailScreen} />
          <Stack.Screen name='chapter-content' component={ChapterContentScreen} />
          <Stack.Screen name='make-member' component={Membership} />
+         <Stack.Screen name='about-dee' component={AboutDeeScreen} />
       </Stack.Navigator>
    )
 }

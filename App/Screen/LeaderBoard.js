@@ -72,12 +72,12 @@ export default function LeaderBoard() {
                 <View>
                   <Text style={{
                     fontFamily: 'Roboto',
-                    fontSize: 21,
+                    fontSize: 12,
                     color: Colors.gray,
                   }}>{item?.userName}</Text>
                   <Text style={{
                     fontFamily: 'Roboto',
-                    fontSize: 16,
+                    fontSize: 14,
                     color: Colors.gray,
                   }}>{item?.point} Points</Text>
                 </View>
@@ -86,7 +86,7 @@ export default function LeaderBoard() {
                 <Image source={
                   index + 1 == 1 ? first
                     : index + 1 == 2 ? second
-                      : third
+                    : third
                 } style={{ width: 60, height: 60, backgroundColor: Colors.light_white, borderRadius: 22, }} />
                 : null}
             </View>
@@ -105,8 +105,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
   },
   userImg: {
-    width: 60,
-    height: 60,
+    width: 50,
+    height: 50,
     borderRadius: 30,
     backgroundColor: Colors.light_primary,
     marginLeft: 20,
@@ -115,8 +115,8 @@ const styles = StyleSheet.create({
   labelStyle: {
     fontFamily: 'serif',
     marginTop: 20,
-    fontSize: 23,
-    padding: 2,
+    fontSize: 18,
+    padding: 4,
     backgroundColor: Colors.light_white,
     color: Colors.golden,
     borderRadius: 10,

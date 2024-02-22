@@ -44,7 +44,7 @@ export default function TabNavigation() {
             )
           }}
         />
-        <Tab.Screen
+        {/* <Tab.Screen
           name="about-dee"
           component={AboutDeeScreen}
           options={{
@@ -53,7 +53,7 @@ export default function TabNavigation() {
               <FontAwesome5 name="info" size={size} color={color} />
             )
           }}
-        />
+        /> */}
         <Tab.Screen
           name="profile"
           component={ProfileScreen}
