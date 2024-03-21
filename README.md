@@ -1,4 +1,4 @@
-# coding-with-dee-app
+# Decoding-with-dee-app
  Decoding with Dee: Conquer the Code - Your E-Learning Adventure Awaits 
 
 **De-coding with Dee: Conquer the Code** is an innovative online platform designed to empower aspiring coders and programmers. Let me paint a vivid picture of what it entails:
