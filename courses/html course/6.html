@@ -1,0 +1,30 @@
+<!-- Web Accessibility in HTML -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Accessibility</title>
+</head>
+<body>
+    <h1>Accessible Website Example</h1>
+    <nav>
+        <ul>
+            <li><a href="#" aria-label="Home">Home</a></li>
+            <li><a href="#" aria-label="About Us">About Us</a></li>
+            <li><a href="#" aria-label="Contact">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <article aria-labelledby="article1Title">
+            <h2 id="article1Title">Article 1</h2>
+            <p>Article content goes here.</p>
+        </article>
+
+        <article aria-labelledby="article2Title">
+            <h2 id="article2Title">Article 2</h2>
+            <p>More content for the second article.</p>
+        </article>
+    </main>
+</body>
+</html>

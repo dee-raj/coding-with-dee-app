@@ -1,0 +1,24 @@
+<!-- Web Storage and Offline Web Apps -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Web Storage</title>
+    <script>
+        // Web Storage example
+        function saveData() {
+            localStorage.setItem('user', 'John Doe');
+        }
+
+        function loadData() {
+            const user = localStorage.getItem('user');
+            alert('User: ' + user);
+        }
+    </script>
+</head>
+<body>
+    <button onclick="saveData()">Save Data</button>
+    <button onclick="loadData()">Load Data</button>
+</body>
+</html>
